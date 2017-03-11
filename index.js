@@ -17,7 +17,6 @@
 
 process.env.DEBUG = 'actions-on-google:*';
 let ApiAiAssistant = require('actions-on-google').ApiAiAssistant;
-let sprintf = require('sprintf-js').sprintf;
 
 let config = require('./config').config;
 let handler = require('./handler');
