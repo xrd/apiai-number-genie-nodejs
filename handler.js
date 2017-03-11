@@ -1,5 +1,7 @@
+let config = require( "./config" ).config
 
 exports.generateAnswer = function generateAnswer (assistant) {
+    
   if (config.DEBUG) { console.log(arguments.callee.name); }
   let answer = getRandomNumber(config.MIN, config.MAX);
   assistant.data.answer = answer;
