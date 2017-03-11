@@ -100,4 +100,4 @@ config.NO_INPUT_PROMPTS = ['I didn\'t hear a number', 'If you\'re still there, w
 
 config.REPEAT_PROMPTS = ['Sure. %s.', 'OK. %s.'];
 
-exports.config = config
+exports.config = config;
