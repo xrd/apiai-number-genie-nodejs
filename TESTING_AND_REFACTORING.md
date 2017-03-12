@@ -7,7 +7,7 @@
 - [ ] Define the behavior of each function: understand how the API.ai calls into the functions; writing a test to instrument it means we understand the interface.
 - [ ] Mocking: Explore how mocking the data sent into the function will look.
 - [ ] Remove magic numbers from code (store as consts which explain what they do).
-- [ ] make debugging easier: replace `console.log( "functionName" )` with `console.log( arguments.callee.name )` code to retrieve that automatically if debug variable is set.
+- [x] make debugging easier: replace `console.log( "functionName" )` with `console.log( arguments.callee.name )` code to retrieve that automatically if debug variable is set.
 - [ ] No globals (comes from modular and testable code)
 - [ ] Make the code readable
   * Configuration is immense, move this to its own module
