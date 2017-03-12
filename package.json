@@ -9,6 +9,7 @@
       "lint": "semistandard \"**/*.js\"",
       "start": "node app.js",
       "monitor": "nodemon app.js",
+      "zip": "node zipit.js",
       "deploy": "gcloud beta functions deploy factsAboutGoogle --trigger-http --stage-bucket <storage_bucket_name>",
       "test": "mocha test"
   },
