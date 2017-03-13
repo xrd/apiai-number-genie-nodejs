@@ -21,8 +21,8 @@ describe( 'Handler', function() {
     })
 
     it( "should test the ask function", function() {
-	h.ask( assistant, "some prompt", undefined );
 	assistant.data.printed = "hi there";
+	h.ask( assistant, "some prompt" )
 	test.equal( assistant.data.lastPrompt, assistant.data.printed );
     });
     
