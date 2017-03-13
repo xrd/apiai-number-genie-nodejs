@@ -16,19 +16,21 @@
     "semistandard": {
 	"globals": [
 	    "after",
-      "afterEach",
-      "before",
-      "beforeEach",
-      "describe",
-      "it"
-    ]
-  },
-  "dependencies": {
-    "sprintf-js": "^1.0.3",
-    "actions-on-google": "^1.0.0"
-  },
-  "devDependencies": {
-      "semistandard": "^9.1.0",
-      "mocha": "^3.2.0"
+	    "afterEach",
+	    "before",
+	    "beforeEach",
+	    "describe",
+	    "it"
+	]
+    },
+    "dependencies": {
+	"sprintf-js": "^1.0.3",
+	"actions-on-google": "^1.0.0"
+    },
+    "devDependencies": {
+	"semistandard": "^9.1.0"
+	, "mocha": "^3.2.0"
+	, "sinon": "^1.17.7"
+
   }
 }
