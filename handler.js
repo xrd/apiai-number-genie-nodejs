@@ -9,7 +9,7 @@ exports.generateAnswer = function generateAnswer (assistant) {
     assistant.data.guessCount = 0;
     assistant.data.fallbackCount = 0;
     assistant.data.steamSoundCount = 0;
-    exports.ask(assistant, printf( assistant, getRandomPrompt(assistant, config.GREETING_PROMPTS) + ' ' +
+    ask(assistant, printf( assistant, getRandomPrompt(assistant, config.GREETING_PROMPTS) + ' ' +
 				   getRandomPrompt(assistant, config.INVOCATION_PROMPT), config.MIN, config.MAX));
 };
 
@@ -287,13 +287,13 @@ exports.repeat = function repeat (assistant) {
     if (config.DEBUG) { console.log(arguments.callee.name); }
     let lastPrompt = assistant.data.lastPrompt;
     if (lastPrompt) {
-	exports.ask(assistant, printf( assistant, getRandomPrompt(assistant, config.REPEAT_PROMPTS), lastPrompt), false);
+	ask(assistant, printf( assistant, getRandomPrompt(assistant, config.REPEAT_PROMPTS), lastPrompt), false);
     } else {
-	exports.ask(assistant, printf( assistant, getRandomPrompt(assistant, config.ANOTHER_GUESS_PROMPTS)), false);
+	ask(assistant, printf( assistant, getRandomPrompt(assistant, config.ANOTHER_GUESS_PROMPTS)), false);
     }
 };
 
-exports.ask = function ask (assistant, prompt, persist) {
+var ask = exports.ask = function(assistant, prompt, persist) {
     console.log('ask: ' + prompt);
     if (persist === undefined || persist) {
 	assistant.data.lastPrompt = assistant.data.printed;
@@ -310,15 +310,15 @@ exports.setRandomNumberGenerator = function( func ) {
     getRandomNumber = func
 }
 
-function printf (assistant, prompt) {
+var printf = exports.printf = function(assistant, prompt) {
     console.log('printf: ' + prompt);
     assistant.data.printed = prompt;
-    // console.log( "What is passed: ", arguments[1] );
+    console.log( "What is passed: ", arguments[1] );
     return sprintf.apply(this, [ arguments[1] ] );
 }
 
 // Utility function to pick prompts
-function getRandomPrompt (assistant, array) {
+var getRandomPrompt = exports.getRandomPrompt = function(assistant, array) {
     let lastPrompt = assistant.data.lastPrompt;
     let prompt;
     if (lastPrompt) {
