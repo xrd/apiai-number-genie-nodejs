@@ -295,7 +295,7 @@ exports.repeat = function repeat (assistant) {
 };
 
 var ask = exports.ask = function(assistant, prompt, persist) {
-    console.log('ask: ' + prompt);
+    // console.log('ask: ' + prompt);
     if (persist === undefined || persist) {
 	assistant.data.lastPrompt = assistant.data.printed;
     }
@@ -332,10 +332,11 @@ var printf = exports.printf = function( assistant, prompt ) {
     // make an array
     var argsAsArray = [];
     for( x in keys.sort() ) {
+	// skip the first item, the assistant
 	if( !first ) {
 	    argsAsArray.push( arguments[x] );
 	}
-	console.log( "key: ", x );
+	// console.log( "key: ", x );
 	first = false;
     }
     // console.log( "Arguments", arguments );

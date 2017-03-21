@@ -51,6 +51,13 @@ describe( 'Handler', function() {
 	    // console.log( "TEST RV", rv, "abc def" );
 	    test.equal( rv, "abc def" )
 	});
+
+	it( "should work with multiple arguments", function() {
+	    prompt = "Welcome back to Number Genie. I'm thinking of a number from %s to %s. What's your first guess?"
+	    var rv = h.printf( assistant, prompt, 10, 100 );
+	    test.equal( rv,
+			"Welcome back to Number Genie. I'm thinking of a number from 10 to 100. What's your first guess?" );
+	})
     });
     
 });
