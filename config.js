@@ -57,7 +57,7 @@ config.QUIT_PROMPTS = ['Alright, talk to you later then.', 'OK, till next time.'
 
 config.GREETING_PROMPTS = ['Let\'s play Number Genie!', 'Welcome to Number Genie!', 'Hi! This is Number Genie.',
   'Welcome back to Number Genie.'];
-config.INVOCATION_PROMPT = ['I\'m thinking of a number from %s to %s. What\'s your first guess?'];
+config.INVOCATION_PROMPT = 'I\'m thinking of a number from %s to %s. What\'s your first guess?';
 config.RE_PROMPT = ['Great!', 'Awesome!', 'Cool!', 'Okay, let\'s play again.', 'Okay, here we go again.',
   'Alright, one more time with feeling.'];
 config.RE_INVOCATION_PROMPT = ['I\'m thinking of a new number from %s to %s. What\'s your guess?'];

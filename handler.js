@@ -9,8 +9,9 @@ exports.generateAnswer = function generateAnswer (assistant) {
     assistant.data.guessCount = 0;
     assistant.data.fallbackCount = 0;
     assistant.data.steamSoundCount = 0;
-    ask(assistant, printf( assistant, getRandomPrompt(assistant, config.GREETING_PROMPTS) + ' ' +
-				   getRandomPrompt(assistant, config.INVOCATION_PROMPT), config.MIN, config.MAX));
+    ask(assistant, printf( assistant,
+			   getRandomPrompt(assistant, config.GREETING_PROMPTS) +
+			   ' ' + config.INVOCATION_PROMPT, config.MIN, config.MAX));
 };
 
 exports.checkGuess = function checkGuess (assistant) {
@@ -310,14 +311,23 @@ exports.setRandomNumberGenerator = function( func ) {
     getRandomNumber = func
 }
 
-var printf = exports.printf = function(assistant, prompt) {
-    console.log('printf: ' + prompt);
+var sprintfxxx = function( arg1, arg2 ) {
+    console.log( "xxxx", arg1, arg2 )
+    return sprintf( arg1, arg2 )
+}
+
+var printf = exports.printf = function( assistant, prompt ) {
+    console.log('INSIDE PRINTF: ' + prompt );
     assistant.data.printed = prompt;
-    console.log( "What is passed: ", arguments[1] );
-    return sprintf.apply(this, [ arguments[1] ] );
+    //console.log( "What is passed: ", arguments.slice(1) );
+    //    console.log( "This", printf );
+    console.log( "args", arguments['1'], arguments['2'] );
+    return sprintf.apply( null, [ prompt, arguments['2'] ] );
 }
 
 // Utility function to pick prompts
+// make sure to use a different one than last time.
+// don't use this if you are 
 var getRandomPrompt = exports.getRandomPrompt = function(assistant, array) {
     let lastPrompt = assistant.data.lastPrompt;
     let prompt;

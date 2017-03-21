@@ -14,7 +14,7 @@ describe( 'Handler', function() {
     });
     
     it('should test the generateAnswer function with default values', function() {
-	ans = h.generateAnswer( assistant )
+	ans = h.generateAnswer( assistant, 0, 100 )
 	test.equal( assistant.data.answer, 3 );
 	test.equal( assistant.data.guessCount, 0 );
 	test.equal( assistant.data.fallbackCount, 0 );
@@ -45,9 +45,11 @@ describe( 'Handler', function() {
 
     describe( "printf", function() {
 	it( "should test the printf function and have proper side effects", function() {
-	    var rv = h.printf( assistant, "abc %s", "s" );
+	    var rv = h.printf( assistant, "abc %s", "def" );
+	    // console.log( "TEST PRINTF", assistant.data.printed, "abc def" );
 	    test.equal( assistant.data.printed, "abc %s" )
-	    test.equal( rv, "abc s" )
+	    // console.log( "TEST RV", rv, "abc def" );
+	    test.equal( rv, "abc def" )
 	});
     });
     
