@@ -316,13 +316,34 @@ var sprintfxxx = function( arg1, arg2 ) {
     return sprintf( arg1, arg2 )
 }
 
+// Original function
+// Why save the preprocessed prompt?
+// function printf(prompt) {
+//     console.log('printf: ' + prompt);
+//     assistant.data.printed = prompt;
+//     return sprintf.apply(this, arguments);
+// }
+
 var printf = exports.printf = function( assistant, prompt ) {
-    console.log('INSIDE PRINTF: ' + prompt );
+    // console.log('INSIDE PRINTF: ' + prompt );
+    // console.log( "Arguments is", typeof arguments );
+    var keys = Object.keys( arguments );
+    var first = true;
+    // make an array
+    var argsAsArray = [];
+    for( x in keys.sort() ) {
+	if( !first ) {
+	    argsAsArray.push( arguments[x] );
+	}
+	console.log( "key: ", x );
+	first = false;
+    }
+    // console.log( "Arguments", arguments );
     assistant.data.printed = prompt;
     //console.log( "What is passed: ", arguments.slice(1) );
     //    console.log( "This", printf );
     console.log( "args", arguments['1'], arguments['2'] );
-    return sprintf.apply( null, [ prompt, arguments['2'] ] );
+    return sprintf.apply( null, argsAsArray );
 }
 
 // Utility function to pick prompts
