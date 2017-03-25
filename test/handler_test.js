@@ -28,7 +28,7 @@ describe( 'Handler', function() {
 	test.equal( askSpy.calledOnce, true );
     });
 
-    xit( "should test the repeat function with last prompt repetition", function() {
+    it( "should test the repeat function with last prompt repetition", function() {
 	assistant.data.lastPrompt = true;
 	h.repeat( assistant );
 	test.equal( askSpy.calledOnce, true );
@@ -57,7 +57,38 @@ describe( 'Handler', function() {
 	    var rv = h.printf( assistant, prompt, 10, 100 );
 	    test.equal( rv,
 			"Welcome back to Number Genie. I'm thinking of a number from 10 to 100. What's your first guess?" );
-	})
+	});
+
+	it( "should work with no arguments", function() {
+	    prompt = "Welcome"
+	    var rv = h.printf( assistant, prompt );
+	    test.equal( rv, "Welcome" );
+	});
+
+	it( "should ignore extra arguments", function() {
+	    prompt = "Welcome"
+	    var rv = h.printf( assistant, prompt, 1, 2, 3 );
+	    test.equal( rv, "Welcome" );
+	});
+
+	it( "should take a lot of arguments", function() {
+	    prompt = "Welcome %s %s %s %s %s"
+	    var rv = h.printf( assistant, prompt, 1, 2, 3, 4, 5 );
+	    test.equal( rv, "Welcome 1 2 3 4 5" );
+	});
+	
+
+	it( "should ignore extra arguments part deux", function() {
+	    prompt = "Welcome %s"
+	    var rv = h.printf( assistant, prompt, 1, 2, 3 );
+	    test.equal( rv, "Welcome 1" );
+	});
+
+	it( "should use undefined if improper number of arguments provided", function() {
+	    prompt = "Welcome %s %s %s"
+	    var rv = h.printf( assistant, prompt, 1 );
+	    test.equal( rv, "Welcome 1 undefined undefined" );
+	});
     });
     
 });

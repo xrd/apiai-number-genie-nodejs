@@ -311,11 +311,6 @@ exports.setRandomNumberGenerator = function( func ) {
     getRandomNumber = func
 }
 
-var sprintfxxx = function( arg1, arg2 ) {
-    console.log( "xxxx", arg1, arg2 )
-    return sprintf( arg1, arg2 )
-}
-
 // Original function
 // Why save the preprocessed prompt?
 // function printf(prompt) {
@@ -341,9 +336,9 @@ var printf = exports.printf = function( assistant, prompt ) {
     }
     // console.log( "Arguments", arguments );
     assistant.data.printed = prompt;
-    //console.log( "What is passed: ", arguments.slice(1) );
-    //    console.log( "This", printf );
-    console.log( "args", arguments['1'], arguments['2'] );
+    // console.log( "What is passed: ", arguments.slice(1) );
+    // console.log( "This", printf );
+    // console.log( "args", arguments['1'], arguments['2'] );
     return sprintf.apply( null, argsAsArray );
 }
 
