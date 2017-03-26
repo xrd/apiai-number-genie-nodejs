@@ -1,4 +1,3 @@
-
 config = {};
 config.DEBUG = true;
 config.MIN = 0;

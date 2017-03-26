@@ -284,14 +284,16 @@ exports.doneNo = function doneNo (assistant) {
 				   getRandomPrompt(assistant, config.ANOTHER_GUESS_PROMPTS)));
 };
 
+// Repeat:
+// Check to see if there was a prior prompt, and if so, reuse it?
 exports.repeat = function repeat (assistant) {
-  if (config.DEBUG) { console.log(arguments.callee.name); }
-  let lastPrompt = assistant.data.lastPrompt;
-  if (lastPrompt) {
-    ask(assistant, printf(assistant, getRandomPrompt(assistant, config.REPEAT_PROMPTS), lastPrompt), false);
-  } else {
-    ask(assistant, printf(assistant, getRandomPrompt(assistant, config.ANOTHER_GUESS_PROMPTS)), false);
-  }
+    if (config.DEBUG) { console.log(arguments.callee.name); }
+    ask(assistant,
+	printf( assistant,
+		getRandomPrompt(assistant,
+				assistant.data.lastPrompt ? config.REPEAT_PROMPTS : config.ANOTHER_GUESS_PROMPT ),
+		assistant.data.lastPrompt ),
+	false);
 };
 
 var ask = exports.ask = function (assistant, prompt, persist) {
